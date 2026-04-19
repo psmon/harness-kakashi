@@ -2,6 +2,8 @@
 
 > "카카시 하네스"라고 부르면 된다. 그것이 전부다.
 
+🌐 **Languages**: **한국어** · [English](README-EN.md)
+
 AI 전문가 에이전트 팀을 구성하고, 코드 품질 관리를 자동화하는 [Claude Code](https://docs.anthropic.com/en/docs/claude-code) 플러그인.
 Codex에서 재사용할 수 있도록 안전한 호환 스킬 래퍼도 함께 제공한다.
 
