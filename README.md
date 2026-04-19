@@ -3,6 +3,7 @@
 > "카카시 하네스"라고 부르면 된다. 그것이 전부다.
 
 AI 전문가 에이전트 팀을 구성하고, 코드 품질 관리를 자동화하는 [Claude Code](https://docs.anthropic.com/en/docs/claude-code) 플러그인.
+Codex에서 재사용할 수 있도록 안전한 호환 스킬 래퍼도 함께 제공한다.
 
 ---
 
@@ -49,6 +50,31 @@ Claude Code 안에서 두 줄을 순서대로 실행합니다.
 git clone https://github.com/psmon/harness-kakashi.git
 cd harness-kakashi
 claude
+```
+
+### Codex에서 사용
+
+Codex는 Claude 플러그인을 직접 읽지 않으므로, 이 저장소는 `codex/skills/`에 **비파괴 호환 래퍼**를 함께 둔다.
+Claude용 원본은 계속 `.claude/skills/`에 남아 있고, Codex 스킬은 그 문서를 기준으로 동작한다.
+
+`~/.codex/config.toml`에 아래처럼 절대 경로를 추가하면 된다:
+
+```toml
+[[skills.config]]
+path = "/absolute/path/to/harness-kakashi/codex/skills/harness-kakashi-creator/SKILL.md"
+enabled = true
+
+[[skills.config]]
+path = "/absolute/path/to/harness-kakashi/codex/skills/harness-build/SKILL.md"
+enabled = true
+```
+
+이렇게 등록하면 Codex에서도 같은 표현으로 부를 수 있다:
+
+```text
+카카시 하네스로 전체 점검해
+harness-kakashi-creator로 새 에이전트 추가해
+harness-build로 구조 검증해
 ```
 
 ### 포함된 스킬
@@ -237,6 +263,11 @@ init이 끝나면 정원지기 카카시가 나타납니다.
 ```
 harness-kakashi/
 ├── .claude-plugin/marketplace.json           # 마켓플레이스 카탈로그
+├── codex/skills/                             # Codex 호환 스킬 래퍼
+│   ├── harness-kakashi-creator/
+│   │   └── SKILL.md
+│   └── harness-build/
+│       └── SKILL.md
 ├── plugins/harness-kakashi/                  # 플러그인 배포 패키지
 │   ├── .claude-plugin/plugin.json            #   매니페스트
 │   └── skills/
