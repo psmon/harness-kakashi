@@ -1,17 +1,17 @@
 ---
 name: harness-build
 description: |
-  하네스 빌더를 Codex에서 사용할 수 있게 하는 호환 스킬.
+  하네스 빌더를 Codex에서 사용할 수 있게 하는 repo-local 스킬.
   `.claude/skills/harness-build`를 기준 문서로 삼아 에이전트 설계, 지식 구축, 엔진 정의, 구조 검증, 버전 관리 절차를 Codex에서 동일하게 수행한다.
   다음 상황에서 사용:
   - "harness-build", "에이전트 설계해", "엔진 설계해", "구조 검증해"
   - "하네스 빌드 상태 확인", "버전 올려", "배포 준비해"
-argument-hint: "[명령] [요구사항]"
 ---
 
 # Harness Build for Codex
 
-Codex용 호환 래퍼다. 설계 절차의 기준은 `.claude/skills/harness-build/SKILL.md`이며, 이 문서는 Codex에서 그 절차를 안전하게 재사용하기 위한 얇은 진입점이다.
+Codex의 repo-local 자동발견 경로인 `.agents/skills/`용 스킬이다.
+설계 절차의 기준은 `.claude/skills/harness-build/SKILL.md`이며, 이 문서는 Codex에서 그 절차를 안전하게 재사용하기 위한 얇은 진입점이다.
 
 ## 기준 문서
 
@@ -29,4 +29,4 @@ Codex용 호환 래퍼다. 설계 절차의 기준은 `.claude/skills/harness-bu
 
 - Codex 호환성 추가를 이유로 Claude 전용 스킬을 깨지 않는다.
 - 배포 자산을 수정할 때는 `.claude/skills/harness-build/`와 `plugins/harness-kakashi/skills/harness-build/`의 역할 차이를 유지한다.
-- Codex 전용 설치/호출 설명은 이 `codex/skills/` 트리에서만 관리한다.
+- repo-local Codex 스킬은 `.agents/skills/`를 기준으로 유지하고, `.codex/skills/`가 있으면 같은 내용을 미러링한다.

@@ -54,33 +54,38 @@ claude
 
 ### Codex에서 사용
 
-Codex는 Claude 플러그인을 직접 읽지 않으므로, 이 저장소는 `codex/skills/`에 **비파괴 호환 래퍼**를 함께 둔다.
-Claude용 원본은 계속 `.claude/skills/`에 남아 있고, Codex 스킬은 그 문서를 기준으로 동작한다.
-Codex용 플러그인 스토어는 아직 준비하지 못했으므로, 현재는 저장소를 `git clone` 또는 `git pull`로 받아서 필요한 스킬을 복사하거나 경로 등록해 사용하는 방식이다.
+Codex용 플러그인 스토어는 아직 준비하지 못했다.
+대신 이 저장소는 repo-local 자동발견을 위해 `.agents/skills/`에 Codex 스킬을 포함한다.
 
-권장 흐름:
+권장 흐름은 단순하다:
 
 ```bash
 git clone https://github.com/psmon/harness-kakashi.git
 cd harness-kakashi
-git pull
+codex
 ```
 
-업데이트가 필요하면 저장소에서 최신 내용을 `git pull`로 받은 뒤, `codex/skills/` 기준으로 계속 사용하면 된다.
+이미 clone한 저장소라면 최신 내용을 받은 뒤 Codex를 다시 시작하면 된다:
 
-`~/.codex/config.toml`에 아래처럼 절대 경로를 추가하면 된다:
+```bash
+git pull
+codex
+```
+
+대부분의 경우 추가 설정 없이 repo-local 스킬이 인식된다.
+만약 사용 중인 Codex 버전에서 repo-local 발견이 실패하면, 그때만 `~/.codex/config.toml`에 아래 경로를 직접 등록하면 된다:
 
 ```toml
 [[skills.config]]
-path = "/absolute/path/to/harness-kakashi/codex/skills/harness-kakashi-creator/SKILL.md"
+path = "/absolute/path/to/harness-kakashi/.agents/skills/harness-kakashi-creator/SKILL.md"
 enabled = true
 
 [[skills.config]]
-path = "/absolute/path/to/harness-kakashi/codex/skills/harness-build/SKILL.md"
+path = "/absolute/path/to/harness-kakashi/.agents/skills/harness-build/SKILL.md"
 enabled = true
 ```
 
-이렇게 등록하면 Codex에서도 같은 표현으로 부를 수 있다:
+인식되면 Codex에서도 같은 표현으로 부를 수 있다:
 
 ```text
 카카시 하네스로 전체 점검해
@@ -273,12 +278,12 @@ init이 끝나면 정원지기 카카시가 나타납니다.
 
 ```
 harness-kakashi/
-├── .claude-plugin/marketplace.json           # 마켓플레이스 카탈로그
-├── codex/skills/                             # Codex 호환 스킬 래퍼
+├── .agents/skills/                           # Codex repo-local 자동발견 스킬
 │   ├── harness-kakashi-creator/
 │   │   └── SKILL.md
 │   └── harness-build/
 │       └── SKILL.md
+├── .claude-plugin/marketplace.json           # 마켓플레이스 카탈로그
 ├── plugins/harness-kakashi/                  # 플러그인 배포 패키지
 │   ├── .claude-plugin/plugin.json            #   매니페스트
 │   └── skills/
