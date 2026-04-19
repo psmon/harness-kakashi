@@ -1,11 +1,34 @@
 # 카카시하네스 (Harness-Kakashi)
 
+![A Harness Must Be PDSA, Not PDCA](docs/PDSA.png)
+
 > "카카시 하네스"라고 부르면 된다. 그것이 전부다.
 
 🌐 **Languages**: **한국어** · [English](README-EN.md)
 
 AI 전문가 에이전트 팀을 구성하고, 코드 품질 관리를 자동화하는 [Claude Code](https://docs.anthropic.com/en/docs/claude-code) 플러그인.
 Codex에서 재사용할 수 있도록 안전한 호환 스킬 래퍼도 함께 제공한다.
+
+---
+
+## 🔬 연구 방향 — 왜 하네스가 PDSA여야 하는가
+
+카카시 하네스는 지속 가능한 개선 루프를 구축하기 위한 방법론으로 **PDSA (Plan-Do-Study-Act)** 를 연구하고 있다.
+이 기법을 그대로 적용할 수도, 더 적합한 다른 기법을 채택할 수도 있다 — 아직 탐색 단계다.
+
+현재 탐색 중인 매핑:
+
+| 단계 | 하네스에서의 역할 (안) |
+|------|---------------------|
+| **Plan** | 에이전트 · 엔진 · 가설 설계 |
+| **Do** | 세션 내 실행 |
+| **Study** | 로그 분석, 근본 원인 파악, 인사이트 추출 |
+| **Act** | 지식 문서화, 다음 주기 개선 |
+
+**핵심 가설**: PDCA는 "Check(검사)"에 머무르는 루프였다. 데밍(Deming)은 후일 "나는 PDCA가 아니라 PDSA를 의도했다"고 수정했다.
+하네스의 본질은 코드를 **검사(Check)** 하는 것이 아니라 **이해(Study)** 하는 것 — 이 가설 아래 방향을 탐색 중이다.
+
+Anthropic Skill 2.0의 학습 루프(Define → Execute → Evaluate & Reflect → Improve) 또한 구조적으로 PDSA와 매우 유사하며, 이 정합성이 연구의 출발점이다.
 
 ---
 

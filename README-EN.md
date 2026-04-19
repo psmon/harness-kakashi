@@ -1,11 +1,34 @@
 # Harness-Kakashi
 
+![A Harness Must Be PDSA, Not PDCA](docs/PDSA.png)
+
 > Just call out "Kakashi Harness." That's all it takes.
 
 🌐 **Languages**: [한국어](README.md) · **English**
 
 A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin for assembling AI expert agent teams and automating code quality management.
 A safe, compatible skill wrapper for Codex is also included for cross-tool reuse.
+
+---
+
+## 🔬 Research direction — Why a harness should be PDSA
+
+Kakashi Harness is researching **PDSA (Plan-Do-Study-Act)** as the methodology behind a sustainable improvement loop.
+We may adopt PDSA directly, or switch to another methodology that fits better — this is still exploratory.
+
+The mapping currently under exploration:
+
+| Phase | Role inside the harness (tentative) |
+|-------|--------------------------------------|
+| **Plan** | Design agents · engines · hypotheses |
+| **Do** | Execute within a session |
+| **Study** | Log analysis, root-cause understanding, insight extraction |
+| **Act** | Document knowledge, improve for the next cycle |
+
+**Core hypothesis**: PDCA is a loop that stops at "Check (inspection)." Deming himself later clarified: *"I intended PDSA, not PDCA."*
+The essence of a harness is not to **check** code but to **study** it — and that is the hypothesis we are currently probing.
+
+Anthropic's Skill 2.0 learning loop (Define → Execute → Evaluate & Reflect → Improve) is also structurally very close to PDSA, and that alignment is the starting point of this research.
 
 ---
 
