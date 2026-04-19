@@ -56,6 +56,17 @@ claude
 
 Codex는 Claude 플러그인을 직접 읽지 않으므로, 이 저장소는 `codex/skills/`에 **비파괴 호환 래퍼**를 함께 둔다.
 Claude용 원본은 계속 `.claude/skills/`에 남아 있고, Codex 스킬은 그 문서를 기준으로 동작한다.
+Codex용 플러그인 스토어는 아직 준비하지 못했으므로, 현재는 저장소를 `git clone` 또는 `git pull`로 받아서 필요한 스킬을 복사하거나 경로 등록해 사용하는 방식이다.
+
+권장 흐름:
+
+```bash
+git clone https://github.com/psmon/harness-kakashi.git
+cd harness-kakashi
+git pull
+```
+
+업데이트가 필요하면 저장소에서 최신 내용을 `git pull`로 받은 뒤, `codex/skills/` 기준으로 계속 사용하면 된다.
 
 `~/.codex/config.toml`에 아래처럼 절대 경로를 추가하면 된다:
 
