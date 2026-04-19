@@ -7,3 +7,4 @@ tmp/
 # .NET 빌드 산출물
 **/bin/
 **/obj/
+/.idea

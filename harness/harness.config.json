@@ -3,9 +3,22 @@
   "$schemaVersion": "1.0.0",
   "name": "Kakashi's Harness",
   "description": "카카시 하네스 이용기록기(테스트겸)",
-  "version": "1.1.0",
-  "agents": ["tamer", "performance-scout", "test-sentinel", "security-guard", "build-doctor", "code-modernizer"],
+  "version": "1.2.0",
+  "agents": [
+    "tamer",
+    "performance-scout",
+    "test-sentinel",
+    "security-guard",
+    "build-doctor",
+    "code-modernizer",
+    "akka-net-specialist",
+    "dotnet-concurrency-specialist",
+    "dotnet-performance-analyst",
+    "dotnet-benchmark-designer",
+    "docfx-specialist",
+    "roslyn-incremental-generator-specialist"
+  ],
   "engine": [],
   "created": "2026-04-19",
-  "lastUpdated": "2026-04-19"
+  "lastUpdated": "2026-04-20"
 }
