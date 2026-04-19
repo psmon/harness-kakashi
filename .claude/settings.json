@@ -1,0 +1,6 @@
+{
+  "enabledPlugins": {
+    "skill-creator@claude-plugins-official": true,
+    "harness-kakashi@harness-kakashi-skills": true
+  }
+}
