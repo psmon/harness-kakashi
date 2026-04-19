@@ -31,9 +31,17 @@ npm install -g @anthropic-ai/claude-code
 
 ### 방법 1: 마켓플레이스에서 설치 (권장)
 
+Claude Code 안에서 두 줄을 순서대로 실행합니다.
+
 ```
-/install-plugin psmon/harness-kakashi
+/plugin marketplace add psmon/harness-kakashi
+/plugin install harness-kakashi@harness-kakashi-skills
 ```
+
+- 첫 줄: GitHub `psmon/harness-kakashi` 저장소를 마켓플레이스로 등록 (`.claude-plugin/marketplace.json`을 인식).
+- 둘째 줄: 등록된 마켓플레이스(`harness-kakashi-skills`)에서 `harness-kakashi` 플러그인을 설치.
+
+설치 상태는 `/plugin` 으로 확인하고, 제거는 `/plugin uninstall harness-kakashi@harness-kakashi-skills` 입니다.
 
 ### 방법 2: Git 클론 후 직접 사용
 
