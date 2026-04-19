@@ -1,12 +1,11 @@
 {
   "$schema": "kakashi-harness",
   "$schemaVersion": "1.0.0",
-  "name": "harness-kakashi",
-  "description": "카카시하네스 - AI 품질 관리 및 워크플로우 자동화 프레임워크",
-  "version": "0.2.0",
-  "agents": ["tamer"],
+  "name": "Kakashi's Harness",
+  "description": "카카시 하네스 이용기록기(테스트겸)",
+  "version": "1.1.0",
+  "agents": ["tamer", "performance-scout", "test-sentinel", "security-guard", "build-doctor", "code-modernizer"],
   "engine": [],
   "created": "2026-04-19",
-  "lastUpdated": "2026-04-19",
-  "note": "v0.2.0 - init 기능 및 모드 시스템 보강"
+  "lastUpdated": "2026-04-19"
 }
