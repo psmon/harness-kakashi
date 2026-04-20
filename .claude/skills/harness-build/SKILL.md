@@ -188,5 +188,6 @@ mode: {mode 1~6}
 ## 주의사항
 
 - 이 스킬은 `.claude/skills/harness-build/`에만 존재한다. `plugins/`에 절대 넣지 않는다.
+- **동명이술 주의**: `plugins/harness-kakashi/skills/harness-build/`는 별개 스킬이다 — 사용자용 "하네스 빌더"(자기 하네스의 에이전트/지식/엔진 설계 도구). 이름만 같을 뿐 본 마더 스킬과 무관하며, 배포판의 정식 3종 컴포넌트 중 하나(빌드/카카시/차크라)다. 그쪽은 삭제하지 말 것.
 - harness-kakashi-creator를 테스트 실행하면서 생기는 `harness/logs/tamer/` 등의 로그는 개발 이력이다. `plugins/` 밖이므로 배포판과 무관하며, git에 자연스럽게 남긴다.
 - 배포판의 init 템플릿은 최소한의 기본 프레임만 제공한다: tamer 에이전트 하나 + 빈 3-Layer 구조.
