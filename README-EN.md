@@ -2,6 +2,8 @@
 
 ![A Harness Must Be PDSA, Not PDCA](docs/PDSA.png)
 
+<sub>📖 [Explore the historical background of PDSA →](docs/pdsa-vs-pdca.md)</sub>
+
 > Just call out "Kakashi Harness." That's all it takes.
 
 🌐 **Languages**: [한국어](README.md) · **English**
