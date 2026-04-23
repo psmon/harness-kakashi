@@ -5,9 +5,11 @@ status: non-canonical-story
 source: harness/knowledge/lore/naruto-worldview.md
 ---
 
+
+
 # 카카시 하네스 세계관 튜토리얼 — 나루토로 이해하기
 
-![카카시 하네스 세계관 튜토리얼 맵](assets/naruto-harness-story-map.svg)
+![카카시 하네스 세계관 튜토리얼 맵](assets/story.jpg)
 
 > 이 문서는 `docs` 하위의 입문용 스토리라인이다.
 > 하네스의 실제 운영 규칙은 `harness/knowledge/lore/naruto-worldview.md`를 정전(canon)으로 따른다.
