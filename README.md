@@ -9,7 +9,6 @@
 🌐 **Languages**: **한국어** · [English](README-EN.md)
 
 AI 전문가 에이전트 팀을 구성하고, 코드 품질 관리를 자동화하는 [Claude Code](https://docs.anthropic.com/en/docs/claude-code) 플러그인.
-Codex에서 재사용할 수 있도록 안전한 호환 스킬 래퍼도 함께 제공한다.
 
 ---
 
@@ -81,44 +80,16 @@ claude
 
 ### Codex에서 사용
 
-Codex용 플러그인 스토어는 아직 준비하지 못했다.
-대신 이 저장소는 repo-local 자동발견을 위해 `.agents/skills/`에 Codex 스킬을 포함한다.
-
-권장 흐름은 단순하다:
+Codex의 **스킬 임포트(skill import)** 기능을 사용하는 것을 권장한다.
+별도의 호환 래퍼를 두지 않고, Codex가 `plugins/harness-kakashi/skills/` 아래의 Claude 스킬을 그대로 임포트해 사용하는 방식이 가장 단순하고 깨지지 않는다.
 
 ```bash
 git clone https://github.com/psmon/harness-kakashi.git
-cd harness-kakashi
-codex
 ```
 
-이미 clone한 저장소라면 최신 내용을 받은 뒤 Codex를 다시 시작하면 된다:
+clone 후 Codex 측 임포트 절차에 따라 `plugins/harness-kakashi/skills/harness-kakashi-creator/SKILL.md`(필요 시 `harness-build/SKILL.md`도)를 임포트한다. 자세한 절차는 사용 중인 Codex 버전의 공식 문서를 참고할 것.
 
-```bash
-git pull
-codex
-```
-
-대부분의 경우 추가 설정 없이 repo-local 스킬이 인식된다.
-만약 사용 중인 Codex 버전에서 repo-local 발견이 실패하면, 그때만 `~/.codex/config.toml`에 아래 경로를 직접 등록하면 된다:
-
-```toml
-[[skills.config]]
-path = "/absolute/path/to/harness-kakashi/.agents/skills/harness-kakashi-creator/SKILL.md"
-enabled = true
-
-[[skills.config]]
-path = "/absolute/path/to/harness-kakashi/.agents/skills/harness-build/SKILL.md"
-enabled = true
-```
-
-인식되면 Codex에서도 같은 표현으로 부를 수 있다:
-
-```text
-카카시 하네스로 전체 점검해
-harness-kakashi-creator로 새 에이전트 추가해
-harness-build로 구조 검증해
-```
+> 이전 버전에서 제공하던 `.agents/skills/` 호환 래퍼는 제거됐다. Codex의 임포트 기능이 더 안정적이고, 동일 스킬을 두 벌로 관리하는 비용이 사라지기 때문이다.
 
 ### 포함된 스킬
 
@@ -142,6 +113,32 @@ harness-build로 구조 검증해
 /harness-kakashi-creator 코드 만들어줘      ← 코드를 만든다
 /harness-kakashi-creator 전체 점검해        ← 코칭을 받는다
 ```
+
+---
+
+## 🐸 두꺼비 소환술 (口寄せの術) — 현자 영입
+
+> 카카시(정원지기)가 **사륜안**으로 기술(術)을 복사한다면,
+> 나루토(사용자)는 **두꺼비 소환술**로 과거 거장의 **사상(思想)** 을 부른다.
+
+이 하네스의 비기. 도메인의 거장(현자)을 소환해 그들의 사상을 작업에 직접 적용한다.
+
+**첫 영입 현자 — W. Edwards Deming (QA의 아버지)**
+
+- **PDSA 사이클**(Plan–Do–**Study**–Act)을 하네스의 **기본 평가 시스템**으로 도입
+- 모든 작업 종료 직전 자동 작동(always-on), 도메인 전문가 평가는 그 위에 얹히는 후속 평가
+- 데밍은 PDCA가 아니라 **PDSA**를 의도했다 — 그 사상의 학문적 근거를 영문 정전으로 보존
+
+**상세 듀토리얼**:
+
+| 문서 | 내용 |
+|------|------|
+| 📜 [세계관 매핑](harness/knowledge/lore/naruto-worldview.md) | 나루토/카카시/현자/술법이 하네스 컴포넌트와 어떻게 1:1 매핑되는가 |
+| 📘 [PDSA — Deming's Doctrine (English)](harness/knowledge/methodology/pdsa-deming.en.md) | PDSA의 학문적 정전. 1차 출처 인용. "Study not Check" 사상 |
+| ⚙️ [기본 평가 운용 규칙 (한국어)](harness/knowledge/methodology/evaluation-base-pdsa.md) | 기본/후속 2단계 평가 구조와 적용 방법 |
+| 🥷 [데밍 현자 에이전트](harness/agents/sage-deming.md) | sage-deming 호출/절차/안티패턴 |
+| 🐸 [소환술 엔진](harness/engine/toad-summoning.md) | 현자 카탈로그·영입 절차·소환 모드 |
+| 📝 [v1.4.0 영입 기록](harness/docs/v1.4.0.md) | 변경 사유·영향·왜 데밍이 첫 현자였나 |
 
 ---
 
@@ -307,11 +304,6 @@ init이 끝나면 정원지기 카카시가 나타납니다.
 
 ```
 harness-kakashi/
-├── .agents/skills/                           # Codex repo-local 자동발견 스킬
-│   ├── harness-kakashi-creator/
-│   │   └── SKILL.md
-│   └── harness-build/
-│       └── SKILL.md
 ├── .claude-plugin/marketplace.json           # 마켓플레이스 카탈로그
 ├── plugins/harness-kakashi/                  # 플러그인 배포 패키지
 │   ├── .claude-plugin/plugin.json            #   매니페스트

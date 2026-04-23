@@ -9,7 +9,6 @@
 🌐 **Languages**: [한국어](README.md) · **English**
 
 A [Claude Code](https://docs.anthropic.com/en/docs/claude-code) plugin for assembling AI expert agent teams and automating code quality management.
-A safe, compatible skill wrapper for Codex is also included for cross-tool reuse.
 
 ---
 
@@ -81,44 +80,16 @@ claude
 
 ### Using on Codex
 
-A Codex plugin store is not yet available.
-Instead, this repository ships Codex skills under `.agents/skills/` for repo-local auto-discovery.
-
-The recommended flow is simple:
+We recommend using Codex's **skill import** feature.
+Rather than maintaining a separate compatibility wrapper, the simplest and most durable path is to let Codex import the Claude skills directly from `plugins/harness-kakashi/skills/`.
 
 ```bash
 git clone https://github.com/psmon/harness-kakashi.git
-cd harness-kakashi
-codex
 ```
 
-If you already cloned the repo, pull the latest and restart Codex:
+After cloning, follow your Codex version's import procedure to import `plugins/harness-kakashi/skills/harness-kakashi-creator/SKILL.md` (and `harness-build/SKILL.md` if you need it). See your Codex version's official docs for the exact steps.
 
-```bash
-git pull
-codex
-```
-
-In most cases repo-local skills are recognized without extra configuration.
-If your Codex version fails to auto-discover them, register the paths explicitly in `~/.codex/config.toml`:
-
-```toml
-[[skills.config]]
-path = "/absolute/path/to/harness-kakashi/.agents/skills/harness-kakashi-creator/SKILL.md"
-enabled = true
-
-[[skills.config]]
-path = "/absolute/path/to/harness-kakashi/.agents/skills/harness-build/SKILL.md"
-enabled = true
-```
-
-Once recognized, Codex responds to the same phrasing:
-
-```text
-Run a full review with kakashi harness
-Add a new agent with harness-kakashi-creator
-Verify structure with harness-build
-```
+> The `.agents/skills/` compatibility wrapper shipped in earlier versions has been removed. Codex's import feature is more robust and removes the cost of maintaining the same skill in two places.
 
 ### Included skills
 
@@ -142,6 +113,32 @@ Verify structure with harness-build
 ```
 
 > Note: the skill also accepts Korean triggers (`전체 점검해`, `새 에이전트 추가해`). Both work.
+
+---
+
+## 🐸 Toad Summoning Jutsu (口寄せの術) — Recruit a Sage
+
+> Where Kakashi (the Gardener) **copies techniques (術) with the Sharingan**,
+> Naruto (the user) **summons the doctrines (思想) of past masters with the Toad Summoning Jutsu**.
+
+The harness's ultimate technique. Summon a domain master (a *Sage*) and apply their doctrine to your work directly.
+
+**First sage recruited — W. Edwards Deming (the father of QA)**
+
+- The **PDSA cycle** (Plan–Do–**Study**–Act) becomes the harness's **base evaluation system**
+- Always-on at the end of every action; specialist evaluations layer on top as follow-ups
+- Deming insisted on **PDSA, not PDCA** — that doctrinal precision is preserved in an English canonical reference
+
+**Tutorials & references**:
+
+| Doc | What it covers |
+|-----|----------------|
+| 📜 [Worldview Mapping](harness/knowledge/lore/naruto-worldview.md) | How Naruto / Kakashi / Sages / Jutsu map 1:1 to harness components |
+| 📘 [PDSA — Deming's Doctrine (English canon)](harness/knowledge/methodology/pdsa-deming.en.md) | Academic reference with primary sources. The "Study not Check" doctrine |
+| ⚙️ [Base Evaluation Operating Rules (Korean)](harness/knowledge/methodology/evaluation-base-pdsa.md) | Two-tier (base + follow-up) evaluation structure and how it applies |
+| 🥷 [Sage Deming Agent](harness/agents/sage-deming.md) | Invocation procedure, output format, anti-patterns |
+| 🐸 [Toad Summoning Engine](harness/engine/toad-summoning.md) | Sage roster, summoning modes, recruitment procedure |
+| 📝 [v1.4.0 Recruitment Log](harness/docs/v1.4.0.md) | Why this change, who's affected, why Deming was the first sage |
 
 ---
 
@@ -307,11 +304,6 @@ Only when all three layers are in place does the code-flower bloom.
 
 ```
 harness-kakashi/
-├── .agents/skills/                           # Codex repo-local auto-discovery skills
-│   ├── harness-kakashi-creator/
-│   │   └── SKILL.md
-│   └── harness-build/
-│       └── SKILL.md
 ├── .claude-plugin/marketplace.json           # Marketplace catalog
 ├── plugins/harness-kakashi/                  # Plugin distribution package
 │   ├── .claude-plugin/plugin.json            #   Manifest
