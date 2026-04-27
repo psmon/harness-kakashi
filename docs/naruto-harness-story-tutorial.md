@@ -5,7 +5,7 @@ status: non-canonical-story
 source: harness/knowledge/lore/naruto-worldview.md
 ---
 
-
+**언어 / Language / 言語**: 🇰🇷 한국어 (현재) · [🇺🇸 English](naruto-harness-story-tutorial.en.md) · [🇯🇵 日本語](naruto-harness-story-tutorial.ja.md)
 
 # 카카시 하네스 세계관 튜토리얼 — 나루토로 이해하기
 
